@@ -1,4 +1,4 @@
-const Footer = () => {
+const ViewAllJobs = () => {
     return (
         <section className="m-auto max-w-lg my-10 px-6">
             <a
@@ -11,4 +11,4 @@ const Footer = () => {
     )
 }
 
-export default Footer;
+export default ViewAllJobs;

@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+
 import logo from '../assets/images/logo.png';
+import { FaMoon } from 'react-icons/fa';
+
 
 const Navbar = () => {
+    // Handle the active link
+    const handleLink = ({isActive}) => (
+        isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' 
+        : 'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
+    );
+
     return (
         <nav className="bg-indigo-700 border-b border-indigo-500">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -20,22 +29,26 @@ const Navbar = () => {
                             >React Jobs</span>
                         </a>
                         <div className="md:ml-auto">
-                        <div className="flex space-x-2">
-                            <Link 
+                        <div className="flex items-center space-x-2">
+                            <NavLink
                                 to="/"
-                                className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                                className={handleLink}
                             >Home
-                            </Link>
-                            <Link 
+                            </NavLink>
+                            <NavLink
                                 to="/jobs"
-                                className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                                className={handleLink}
                             >Jobs
-                            </Link>
-                            <Link 
-                                to="/add-jobs"
-                                className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                            </NavLink>
+                            <NavLink
+                                to="/add-jobss"
+                                className={handleLink}
                             >Add Jobs
-                            </Link>
+                            </NavLink>
+
+                            <FaMoon 
+                                className='text-2xl text-white justify-end'
+                            />
                         </div>
                         </div>
                     </div>

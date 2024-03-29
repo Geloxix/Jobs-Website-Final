@@ -14,9 +14,12 @@ export default {
             gridAutoColumns: {
                 '70/30': '70% 28%',
             },
+            colors: {
+                'darkgray': '#0A0A0A',
+            },
         },
     },
-    darkMode: 'dark',
+    darkMode: 'class',
     plugins: [],
 }
 

@@ -1,18 +1,37 @@
 import { NavLink} from 'react-router-dom';
-
+import { useState, useEffect } from 'react';
 import logo from '../assets/images/logo.png';
-import { FaMoon } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 
 const Navbar = () => {
+    const [isDark, setIsDark] = useState(
+        () => localStorage.getItem('theme') === 'dark' || false
+    )
     // Handle the active link
     const handleLink = ({isActive}) => (
-        isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' 
+        isActive ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-1 dark:bg-indigo-500' 
         : 'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
     );
 
+
+    const handleDarkMode = () => {
+        setIsDark(!isDark);
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    useEffect(() => {
+    // Retrieve initial theme preference from localStorage
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+            setIsDark(true);
+            document.documentElement.classList.add('dark'); // Apply dark class if stored as dark
+        }
+    }, [])
+
     return (
-        <nav className="bg-indigo-700 border-b border-indigo-500">
+        <nav className="bg-indigo-700 border-b border-1 border-indigo-500 dark:bg-zinc-900 dark:border-gray-700">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between">
                     <div
@@ -25,7 +44,7 @@ const Navbar = () => {
                             src={logo}
                             alt="React Jobs"
                         />
-                        <span className="hidden md:block text-white text-2xl font-bold ml-2"
+                        <span className="hidden md:block text-white text-2xl font-bold ml-2 dark:text-indigo-500"
                             >React Jobs</span>
                         </a>
                         <div className="md:ml-auto">
@@ -46,9 +65,15 @@ const Navbar = () => {
                             >Add Jobs
                             </NavLink>
 
-                            <FaMoon 
-                                className='text-2xl text-white justify-end'
-                            />
+                            <button 
+                                onClick={handleDarkMode}
+                            >
+                                {isDark ? <FaMoon 
+                                    className='text-2xl text-white justify-end'
+                                /> : <FaSun 
+                                    className='text-2xl text-white justify-end'
+                                />}
+                            </button>
                         </div>
                         </div>
                     </div>

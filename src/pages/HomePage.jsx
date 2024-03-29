@@ -5,12 +5,12 @@ import ViewAllJobs from '../components/ViewAllJobs';
 
 const HomePage = () => {
     return (
-        <>
+        <section className='dark:bg-zinc-900'>
             <Hero />
             <HomeCards />
             <JobListings isHome={true} />
             <ViewAllJobs />
-        </>
+        </section>
     );
 }
 

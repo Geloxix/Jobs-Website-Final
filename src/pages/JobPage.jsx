@@ -1,5 +1,5 @@
 import { useParams, useLoaderData, Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaMapMarkerAlt } from "react-icons/fa";
 
 const JobPage = () => {
     const { id } = useParams(); 
@@ -7,7 +7,7 @@ const JobPage = () => {
 
     return (
         <>
-            <section>
+            <section className="dark:bg-zinc-900">
                 <div className="container m-auto py-6 px-6">
                     <Link
                         to="/jobs"
@@ -18,9 +18,9 @@ const JobPage = () => {
                 </div>
             </section>
 
-            <section className="bg-indigo-50">
+            <section className="bg-indigo-50 dark:bg-zinc-900">
                 <div className="container m-auto py-10 px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-70/30 w-full gap-6">
                         <main>
                             <div
                                 className="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
@@ -32,8 +32,7 @@ const JobPage = () => {
                                 <div
                                     className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
                                 >
-                                    <i className="fa-solid fa-location-dot text-lg text-orange-700 mr-2"
-                                    ></i>
+                                    <FaMapMarkerAlt className="fa-solid fa-location-dot text-lg text-orange-700 mr-2" />
                                     <p className="text-orange-700">{ job.location }</p>
                                 </div>
                             </div>

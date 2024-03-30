@@ -7,7 +7,7 @@ const JobPage = () => {
 
     return (
         <>
-            <section className="dark:bg-zinc-900">
+            <section className="dark:bg-zinc-800">
                 <div className="container m-auto py-6 px-6">
                     <Link
                         to="/jobs"
@@ -18,7 +18,7 @@ const JobPage = () => {
                 </div>
             </section>
 
-            <section className="bg-indigo-50 dark:bg-zinc-900">
+            <section className="bg-indigo-50 dark:bg-zinc-800">
                 <div className="container m-auto py-10 px-6">
                     <div className="grid grid-cols-2 md:grid-cols-70/30 w-full gap-6">
                         <main>

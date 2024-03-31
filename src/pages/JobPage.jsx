@@ -1,10 +1,16 @@
-import { useParams, useLoaderData, Link } from "react-router-dom";
+import { useParams, useLoaderData, Link, useNavigation } from "react-router-dom";
 import { FaArrowLeft, FaMapMarkerAlt } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 const JobPage = () => {
-    const { id } = useParams(); 
-    const job = useLoaderData();
-
+    // const { id } = useParams(); 
+    const job = useLoaderData(); //storing loader data
+    const navigation = useNavigation();
+    
+    if (navigation.state === "loading") {
+        <Spinner />
+    }
+    
     return (
         <>
             <section className="dark:bg-zinc-800">
@@ -99,7 +105,9 @@ const JobPage = () => {
 }
 
 const jobLoader = async({ params } ) => {
-    const response = await fetch(`/api/jobs/${params.id}`);
+    const jobId = params.id;
+
+    const response = await fetch(`/api/jobs/${jobId}`);
     const data = await response.json();
     return data;
 }

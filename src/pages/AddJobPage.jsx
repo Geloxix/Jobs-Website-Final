@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const AddJobPage = () => {
+const AddJobPage = ({ handleAddJobSubmit }) => {
     const [title, setTitle] = useState('');
     const [type, setType] = useState('Full-Time');
     const [location, setLocation] = useState('');
@@ -10,6 +11,8 @@ const AddJobPage = () => {
     const [companyDescription, setCompanyDescription] = useState('');
     const [contactEmail, setContactEmail] = useState('');
     const [contactPhone, setContactPhone] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit  = (e) => {
         e.preventDefault();
@@ -29,13 +32,15 @@ const AddJobPage = () => {
             },
         };
 
-        console.log(newJob);
+        handleAddJobSubmit(newJob);
+
+        return navigate('/jobs');
     };
 
     return (
         <section className="bg-indigo-50 dark:bg-zinc-800">
             <div className="container m-auto max-w-2xl py-24">
-                <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+                <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0 dark:bg-zinc-600 dark:text-white">
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 

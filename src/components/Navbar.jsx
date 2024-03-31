@@ -1,4 +1,4 @@
-import { NavLink} from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import logo from '../assets/images/logo.png';
 import { FaMoon, FaSun } from 'react-icons/fa';
@@ -39,7 +39,7 @@ const Navbar = () => {
                         className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
                     >
                         {/* <!-- Logo --> */}
-                        <a className="flex flex-shrink-0 items-center mr-4" href="/index.html">
+                        <Link className="flex flex-shrink-0 items-center mr-4" to="/">
                         <img
                             className="h-10 w-auto"
                             src={logo}
@@ -47,7 +47,7 @@ const Navbar = () => {
                         />
                         <span className="hidden md:block text-white text-2xl font-bold ml-2 dark:text-indigo-500"
                             >React Jobs</span>
-                        </a>
+                        </Link>
                         <div className="md:ml-auto flex items-center">
                             <div className="flex items-center space-x-2">
                                 <NavLink

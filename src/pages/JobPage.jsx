@@ -1,15 +1,25 @@
-import { useParams, useLoaderData, Link, useNavigation } from "react-router-dom";
+import { useParams, useLoaderData, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaMapMarkerAlt } from "react-icons/fa";
-import Spinner from "../components/Spinner";
+import { toast } from "react-toastify";
 
-const JobPage = () => {
-    // const { id } = useParams(); 
+const JobPage = ({ deleteJob }) => {
+    const { id } = useParams(); 
     const job = useLoaderData(); //storing loader data
-    const navigation = useNavigation();
-    
-    if (navigation.state === "loading") {
-        <Spinner />
-    }
+    const navigate = useNavigate();
+    //Hande the Deleting Job
+    const handleDeleteJob = (jobId) => {
+        const confirm = window.confirm('Are you sure you want to delete this job?');
+
+        if (!confirm) {
+            return;
+        }
+
+        deleteJob(jobId);
+        
+        toast.success(`Job deleted successfully`);
+        return navigate('/jobs');
+    };
+
     
     return (
         <>
@@ -92,6 +102,7 @@ const JobPage = () => {
                                 >Edit Job</Link>
                             <button
                                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                                onClick={() => handleDeleteJob(job.id)}
                             >
                                 Delete Job
                             </button>
@@ -106,6 +117,11 @@ const JobPage = () => {
 
 const jobLoader = async({ params } ) => {
     const jobId = params.id;
+    // const user = await getUser();
+
+    // if (!user) {
+    //     return redirect('/jobs');
+    // }
 
     const response = await fetch(`/api/jobs/${jobId}`);
     const data = await response.json();

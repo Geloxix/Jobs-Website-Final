@@ -16,7 +16,7 @@ export default {
             },
             colors: {
                 'darkgray': '#0A0A0A',
-            },
+            },  
         },
     },
     darkMode: 'class',

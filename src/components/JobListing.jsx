@@ -23,7 +23,7 @@ const JobListing = ({ job }) => {
             </div>
 
             <button 
-                    className="text-indigo-700 hover:text-indigo-300 mb-5 text-[11px]"
+                    className="text-indigo-700 hover:text-indigo-300 mb-5 text-[11px] dark:text-white"
                     onClick={() => {showFullDescription ? setShowFullDescription(false) : setShowFullDescription(true)}}
                 >{showFullDescription ? 'Show Less..' : 'Show More..'}</button>
             
